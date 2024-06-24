@@ -1,13 +1,10 @@
-# Spacemesh Scripts
-
-This repo provides a set of utility scripts for running Spacemesh's node.
+# Meson Scripts
 
 | Requirement                                          | Passed |
 | ---------------------------------------------------- | ------ |
-| 4-cores-cpu-and-8-gb-ram-and-350GB-storage instance. | ✅     |
-| Allow tcp 7153 and udp 7153 ports                    | ✅     |
+| 2-cores-cpu-and-2-gb-ram-and-450GB-storage instance. | ✅     |
+| Allow all ports                                      | ✅     |
 | SSH into an instance                                 | ✅     |
-| Stressfree                                           | ✅     |
 
 ## Prerequisite
 
@@ -28,34 +25,34 @@ At the end, you should have logged-in account and selected cloud project.
 Run the command below
 
 ```
-curl https://raw.githubusercontent.com/B6111427/blockchain-node-scripts/master/spacemesh/create-gcloud-instance.sh \
+curl https://raw.githubusercontent.com/B6111427/blockchain-node-scripts/master/meson/create-gcloud-instance.sh \
     --output create-gcloud-instance.sh && \
     chmod +x create-gcloud-instance.sh && \
     ./create-gcloud-instance.sh -n YOUR_INSTANCE_NAME
 ```
 
 > Note: Replace YOUR_INSTANCE_NAME with your desired name.
+
 ## Setup systemd service
 
-`curl -s https://raw.githubusercontent.com/B6111427/blockchain-node-scripts/master/spacemesh/setup-systemd-service-spacemesh.sh | bash -s -- YOUR_WALLET_ADDRESS`
-
-## Run Spacemesh Systemd Service
+`curl -s https://raw.githubusercontent.com/B6111427/blockchain-node-scripts/master/meson/meson.sh | bash`
+## Run Systemd Service
 
 Start the service
 
 ```
-sudo systemctl enable spacemesh.service
-sudo systemctl start spacemesh.service
+sudo systemctl enable meson.service
+sudo systemctl start meson.service
 ```
 
 Stop the service
 
 ```
-sudo systemctl stop spacemesh.service
+sudo systemctl stop meson.service
 ```
 
 You can verify the service is running with:
-`sudo systemctl status spacemesh.service`
+`sudo systemctl status meson.service`
 
 You can also check the logs by executing:
-`sudo journalctl -f -u spacemesh.service`
+`sudo journalctl -f -u meson.service`
